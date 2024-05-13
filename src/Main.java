@@ -1,6 +1,9 @@
 import Ex01.ContaBancaria;
 import Ex01.ContaCorrente;
 import Ex01.ContaPoupanca;
+import Ex02.Item;
+import Ex02.Alimento;
+import Ex02.Eletronicos;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -9,7 +12,7 @@ public class Main {
         exercicio02();
     }
 
-    private static void exercicio01() {
+    private static void exercicio01() throws Exception {
         
         ContaBancaria contaCorrente = new ContaCorrente("Obedes Cunha", 1234, 400.50f, 200);
 
@@ -40,8 +43,37 @@ public class Main {
         contaPoupanca.exibirSaldo();
     }
 
-    private static void exercicio02() {
+    private static void exercicio02() throws Exception {
 
+        Item alimento = new Alimento(1, "Wafer", 3, 21);
+        
+        alimento.exibirStatus();    
+        alimento.adicionarItem(4);
 
+        alimento.exibirStatus();
+
+        try {
+            alimento.removerItem(10);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        alimento.exibirStatus();
+        
+        Item eletronico = new Eletronicos(2, "Celular", 5, 500.50f);
+        
+        eletronico.exibirStatus();
+
+        eletronico.adicionarItem(6);
+
+        eletronico.exibirStatus();
+
+        try {
+            eletronico.removerItem(10);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        eletronico.exibirStatus();
     }
 }
