@@ -11,6 +11,10 @@ import Ex03.ReservaVoo;
 import Ex04.Estudante;
 import Ex04.Pessoa;
 import Ex04.Professor;
+import Ex05.Conversor;
+import Ex05.Distancia;
+import Ex05.Peso;
+import Ex05.Temperatura;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -19,9 +23,12 @@ public class Main {
         exercicio02();
         exercicio03();
         exercicio04();
+        exercicio05();
     }
 
     private static void exercicio01() throws Exception {
+
+        // SISTEMA DE GESTÃO BANCÁRIA
 
         ContaBancaria contaCorrente = new ContaCorrente("Obedes Cunha", 1234, 400.50f, 200);
 
@@ -53,6 +60,8 @@ public class Main {
     }
 
     private static void exercicio02() throws Exception {
+
+        // SISTEMA DE CONTROLE DE ESTOQUE
 
         Item alimento = new Alimento(1, "Wafer", 3, 21);
 
@@ -88,6 +97,8 @@ public class Main {
 
     private static void exercicio03() throws Exception {
 
+        // SISTEMA DE RESERVA DE VIAGEM E HOTEL 
+
         ReservaVoo europa = new Voo(3, 123, "Alemanha");
 
         europa.exibirInfo();
@@ -122,6 +133,8 @@ public class Main {
 
     private static void exercicio04() throws Exception {
 
+        // SISTEMA DE REGISTRO ACADEMICO
+
         Pessoa prof = new Professor("Renan", "renan@gmail.com", "nao","Matematica e Historia");
 
         try {
@@ -143,4 +156,69 @@ public class Main {
         estudante.exibirInformacoes();
     }
 
+    private static void exercicio05() throws Exception {
+
+        //CONVERSOR DE UNIDADES
+
+        /*O programa identifica qual unidade está errada 
+        * (por exemplo só a primeira opção errada,
+        * apenas a segunda ou as duas)
+        * Temperatura: celsius - kelvin
+        * Peso: kilo - grama
+        * Distancia: kilometro - metro
+        */
+
+        //-----------
+        Conversor kilometro = new Distancia("erro", "erro");
+
+        System.out.println("\n---DISTANCIA");
+
+        try {
+            System.out.println("\n1 Km tem " + kilometro.converterDeSi(1) + " metros");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("\n1000 m tem " + kilometro.converterParaSi(1000) + " Km");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        //----------------
+        Conversor celsius = new Temperatura("erro", "kelvin");
+
+        System.out.println("\n---TEMPERATURA");
+
+        try {
+            System.out.println("\n10 °C são " + celsius.converterDeSi(10) + " K");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("\n283 K são " + celsius.converterParaSi(283) + " °C");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        //----------------
+        Conversor quilo = new Peso("quilo", "erro");
+
+        System.out.println("\n---PESO");
+
+        try {
+            System.out.println("\n10 Kg são " + quilo.converterDeSi(10) + " g");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("\n10.000 g são " + quilo.converterDeSi(10000) + " Kg");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
 }
